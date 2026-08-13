@@ -20,7 +20,7 @@ export function AboutSection() {
             <motion.div style={reduce ? {} : { y: imgY }} className="absolute inset-[-6%]">
               <Image
                 src="/images/about.png"
-                alt="SIRI Constructions and Developers team reviewing plans on site"
+                alt="SIRI Constructions and Developers — residential villa design"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"

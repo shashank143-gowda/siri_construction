@@ -19,6 +19,9 @@ import { ContactSection } from "@/components/siri/contact-section"
 import { Footer } from "@/components/siri/footer"
 import { MobileActionBar } from "@/components/siri/mobile-action-bar"
 
+import { ValidationSection } from "@/components/siri/validation-section"
+
+
 export default function HomePage() {
   return (
     <SmoothScrollProvider>
@@ -36,6 +39,8 @@ export default function HomePage() {
         <AboutSection />
 
         <ServicesSection />
+
+        <ValidationSection />
 
         <ProjectsSection />
 
