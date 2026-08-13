@@ -28,7 +28,7 @@ export function Hero() {
       <motion.div style={s} className="absolute inset-0">
         <Image
           src="/images/hero-main.png"
-          alt="Modern residential villa built by SIRI Constructions and Developers at dusk"
+          alt="Modern residential villa built by Siri Construction at dusk"
           fill
           priority
           sizes="100vw"
@@ -41,7 +41,7 @@ export function Hero() {
         <motion.div style={{ clipPath: secondClip }} className="absolute inset-0">
           <Image
             src="/images/hero-secondary.png"
-            alt="Modern concrete residence by SIRI Constructions and Developers"
+            alt="Modern concrete residence by Siri Construction"
             fill
             sizes="100vw"
             className="object-cover"

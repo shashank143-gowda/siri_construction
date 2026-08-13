@@ -23,25 +23,43 @@ export default function HomePage() {
   return (
     <SmoothScrollProvider>
       <Loader />
+
       <Navbar />
+
       <main>
         <Hero />
+
         <IntroSection />
+
         <ProjectScrollExperience />
+
         <AboutSection />
+
         <ServicesSection />
+
         <ProjectsSection />
+
         <ProcessTimeline />
+
         <WhySiri />
+
         <StatsSection />
+
         <BeforeAfter />
+
         <GallerySection />
+
         <Testimonials />
+
         <ServiceArea />
+
         <QuoteForm />
+
         <ContactSection />
       </main>
+
       <Footer />
+
       <MobileActionBar />
     </SmoothScrollProvider>
   )
