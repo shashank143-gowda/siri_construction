@@ -32,6 +32,7 @@ export const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Projects', href: '#projects' },
   { label: 'Process', href: '#process' },
+  { label: 'Validation', href: '#validation' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -238,6 +239,23 @@ export const serviceDivisions = {
   validation: services.slice(6),
 }
 
+// Feature bullets for the Validation & Compliance division, shown in its
+// own section (see ValidationSection). Keep short — Vikas's brief-copy rule.
+export const validationFeatures: Record<string, string[]> = {
+  'Financial Validation & Audit': [
+    'Project cost audits',
+    'Budget verification',
+    'Quality-vs-cost validation',
+    'Financial reporting support',
+  ],
+  'Regulatory Compliance': [
+    'Statutory approvals',
+    'Certification support',
+    'Compliance documentation',
+    'Factory & institutional compliance',
+  ],
+}
+
 export const process = [
   { index: '01', title: 'Consultation', text: 'Understand requirements.', image: '/images/about.png' },
   { index: '02', title: 'Site Assessment', text: 'Study the location and project requirements.', image: '/images/stage-before.png' },
@@ -278,6 +296,12 @@ export const galleryItems = [
   { src: '/images/stage-foundation.png', category: 'Construction', title: 'Foundation Stage', location: 'Hassan' },
   { src: '/images/project-03.png', category: 'Completed Projects', title: 'Contemporary Residence', location: 'Hassan' },
   { src: '/images/stage-after.png', category: 'Homes', title: 'Finished Home', location: 'Hassan' },
+  { src: '/images/gallery-kitchen.jpg', category: 'Interiors', title: 'Kitchen Design', location: 'Hassan' },
+  { src: '/images/gallery-bedroom.jpg', category: 'Interiors', title: 'Bedroom Interior', location: 'Hassan' },
+  { src: '/images/gallery-pooja.jpg', category: 'Interiors', title: 'Pooja Room', location: 'Hassan' },
+  { src: '/images/gallery-wardrobe.jpg', category: 'Interiors', title: 'Wardrobe Design', location: 'Hassan' },
+  { src: '/images/gallery-study.jpg', category: 'Interiors', title: 'Study Nook', location: 'Hassan' },
+  { src: '/images/gallery-bedroom-02.jpg', category: 'Interiors', title: 'Bedroom Interior', location: 'Hassan' },
 ]
 
 // No fake testimonials. These are clearly-marked placeholders to be replaced
