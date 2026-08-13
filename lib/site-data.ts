@@ -11,11 +11,11 @@ export const company = {
   locationShort: 'Hassan • Karnataka',
   address: 'Near Malnad Nursing Home, K R Puram, Hassan',
   gstin: '29CAHPB7717E1ZR',
-  phone: '+91 XXXXX XXXXX',
-  phoneHref: 'tel:+91XXXXXXXXXX',
+  phone: '+91 91640 20996',
+  phoneHref: 'tel:+919164020996',
   email: 'hello@siriconstructions.example',
-  whatsapp: '+91 XXXXX XXXXX',
-  whatsappHref: 'https://wa.me/91XXXXXXXXXX',
+  whatsapp: '+91 91640 20996',
+  whatsappHref: 'https://wa.me/919164020996',
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=Hassan+Karnataka',
   // Only genuine, existing accounts should be listed. Placeholders shown as inactive.
   socials: [
