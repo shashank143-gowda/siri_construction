@@ -3,11 +3,9 @@ import { Loader } from "@/components/siri/loader"
 import { Navbar } from "@/components/siri/navbar"
 import { Hero } from "@/components/siri/hero"
 import { IntroSection } from "@/components/siri/intro-section"
-import { ProjectScrollExperience } from "@/components/siri/project-scroll-experience"
 import { AboutSection } from "@/components/siri/about-section"
 import { ServicesSection } from "@/components/siri/services-section"
 import { ProjectsSection } from "@/components/siri/projects-section"
-import { ProcessTimeline } from "@/components/siri/process-timeline"
 import { WhySiri } from "@/components/siri/why-siri"
 import { StatsSection } from "@/components/siri/stats-section"
 import { BeforeAfter } from "@/components/siri/before-after"
@@ -35,8 +33,7 @@ export default function HomePage() {
 
         <IntroSection />
 
-        <ProjectScrollExperience />
-
+        
         <AboutSection />
 
         <ServicesSection />
@@ -45,7 +42,7 @@ export default function HomePage() {
 
         <ProjectsSection />
 
-        <ProcessTimeline />
+        
 
         <WhySiri />
 
@@ -53,13 +50,15 @@ export default function HomePage() {
 
         <BeforeAfter />
 
-        <GallerySection />
+        
 
         <Testimonials />
 
         <ClientsSection />
 
         <ServiceArea />
+
+        <GallerySection />
 
         <QuoteForm />
 

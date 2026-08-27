@@ -33,8 +33,7 @@ export const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Clients', href: '#clients' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Process', href: '#process' },
-  { label: 'Validation', href: '#validation' },
+  
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -331,16 +330,16 @@ export const projectTypeOptions = [
 ]
 
 export const clients = [
-  'Aadhar Housing Finance Ltd.',
-  'Veritas Finance Pvt Ltd.',
-  'The Hassan District Co-operative Central Bank Ltd.',
-  'Sri Kannikaparameshwari Co-operative Bank Ltd.',
-  'City Co-operative Bank Ltd.',
-  'Varashakti Housing Finance Ltd.',
-  'Cholamandalam Investment & Finance Company Ltd.',
-  'Manappuram Home Finance Ltd.',
-  'Piramal Finance Ltd.',
-  'Slice Small Finance Bank Ltd.',
-  'Navanc Data Sciences Private Limited',
-  'Ramaiah Capital Private Limited',
+  { name: 'Aadhar Housing Finance Ltd.', logo: '/images/aadhar-housing.png' },
+  { name: 'Veritas Finance Pvt Ltd.', logo: '/images/veritas-finance.webp' },
+  { name: 'The Hassan District Co-operative Central Bank Ltd.', logo: '/images/hassan-district-bank.png' },
+  { name: 'Sri Kannikaparameshwari Co-operative Bank Ltd.', logo: '/images/kannikaparameshwari-bank.png' },
+  { name: 'City Co-operative Bank Ltd.', logo: '/images/city-cooperative-bank.png' },
+  { name: 'Varashakti Housing Finance Ltd.', logo: '/images/varashakti-housing.png' },
+  { name: 'Cholamandalam Investment & Finance Company Ltd.', logo: '/images/chola-finance.webp' },
+  { name: 'Manappuram Home Finance Ltd.', logo: '/images/manappuram-home-finance.webp' },
+  { name: 'Piramal Finance Ltd.', logo: '/images/piramal-finance.jpg' },
+  { name: 'Slice Small Finance Bank Ltd.', logo: '/images/slice-bank.png' },
+  { name: 'Navanc Data Sciences Private Limited', logo: '/images/navanc-data-sciences.png' },
+  { name: 'Ramaiah Capital Private Limited', logo: '/images/ramaiah-capital.png' },
 ]

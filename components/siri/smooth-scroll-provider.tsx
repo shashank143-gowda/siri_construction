@@ -32,6 +32,13 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     gsap.ticker.add(raf)
     gsap.ticker.lagSmoothing(0)
 
+    // Recalculate all ScrollTrigger positions once everything has
+    // finished loading/laying out (fixes pin start/end drift after
+    // content changes, e.g. removed sections, late-loading images/fonts).
+    const refresh = () => ScrollTrigger.refresh()
+    window.addEventListener('load', refresh)
+    const refreshTimeout = setTimeout(refresh, 500)
+
     // Support in-page anchor links with Lenis
     const handleAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest('a[href^="#"]') as HTMLAnchorElement | null
@@ -48,6 +55,8 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     return () => {
       document.removeEventListener('click', handleAnchorClick)
+      window.removeEventListener('load', refresh)
+      clearTimeout(refreshTimeout)
       gsap.ticker.remove(raf)
       lenis.destroy()
     }
