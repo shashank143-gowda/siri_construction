@@ -11,11 +11,11 @@ export const company = {
   locationShort: 'Hassan • Karnataka',
   address: 'Near Malnad Nursing Home, K R Puram, Hassan',
   gstin: '29CAHPB7717E1ZR',
-  phone: '+91 XXXXX XXXXX',
-  phoneHref: 'tel:+91XXXXXXXXXX',
+  phone: '+91 91640 20996',
+  phoneHref: 'tel:+91 91640 20996',
   email: 'hello@siriconstructions.example',
-  whatsapp: '+91 XXXXX XXXXX',
-  whatsappHref: 'https://wa.me/91XXXXXXXXXX',
+  whatsapp: '+91 91640 20996',
+  whatsappHref: 'https://wa.me/919164020996',
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=Hassan+Karnataka',
   // Only genuine, existing accounts should be listed. Placeholders shown as inactive.
   socials: [
@@ -23,6 +23,7 @@ export const company = {
     { label: 'Facebook', href: '#' },
     { label: 'YouTube', href: '#' },
     { label: 'LinkedIn', href: '#' },
+    
   ],
 }
 
@@ -30,6 +31,7 @@ export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
+  { label: 'Clients', href: '#clients' },
   { label: 'Projects', href: '#projects' },
   { label: 'Process', href: '#process' },
   { label: 'Validation', href: '#validation' },
@@ -222,37 +224,39 @@ export const constructionStages = [
 ]
 
 export const services = [
-  { index: '01', title: 'Residential Construction', image: '/images/project-01.png', description: 'End-to-end construction of homes and villas built for everyday living and lasting value.' },
-  { index: '02', title: 'Commercial Construction', image: '/images/project-commercial.png', description: 'Functional, durable commercial spaces delivered to specification and schedule.' },
-  { index: '03', title: 'Civil Works', image: '/images/project-civil.png', description: 'Engineered civil and structural works built with precision and integrity.' },
-  { index: '04', title: 'Turnkey Construction', image: '/images/project-03.png', description: 'A single point of responsibility from design coordination to handover.' },
-  { index: '05', title: 'Renovation & Remodeling', image: '/images/interior-01.png', description: 'Thoughtful renovation and remodeling that renews spaces and adds value.' },
-  { index: '06', title: 'Structural Works', image: '/images/stage-foundation.png', description: 'Foundations, framing and load-bearing structures engineered to last.' },
-  { index: '07', title: 'Financial Validation & Audit', image: '/images/about.png', description: 'Project cost and quality validation, financial audits and budget verification for construction projects.' },
-  { index: '08', title: 'Regulatory Compliance', image: '/images/intro-structure.png', description: 'Compliance checks, certification support and regulatory validation for factories, institutions and corporate projects.' },
+  { index: '01', title: 'Structural Design', image: '/images/stage-foundation.png', description: 'Engineered structural design for safe, durable, load-bearing construction.' },
+  { index: '02', title: 'Architectural Design Planning', image: '/images/intro-structure.png', description: 'Complete architectural planning tailored to your site and requirements.' },
+  { index: '03', title: 'Exterior and Interior Design', image: '/images/interior-01.png', description: 'Cohesive exterior facades and interior spaces designed together.' },
+  { index: '04', title: 'Layout Planning', image: '/images/about.png', description: 'Efficient space and layout planning for functional, well-utilised buildings.' },
+  { index: '05', title: 'Construction and Execution Works', image: '/images/stage-during.png', description: 'End-to-end construction execution from foundation to handover.' },
+  { index: '06', title: 'Supervision Works', image: '/images/stage-before.png', description: 'On-site supervision ensuring quality, safety and schedule compliance.' },
+  { index: '07', title: 'Interior Works', image: '/images/gallery-kitchen.jpg', description: 'Complete interior fit-out and finishing work.' },
+  { index: '08', title: "Property Valuation for Banks & NBFC's", image: '/images/project-commercial.png', description: 'Certified property valuation reports for bank and NBFC loan purposes.' },
+  { index: '09', title: 'Property Valuation for Visa & Immigration purpose', image: '/images/project-civil.png', description: 'Property valuation reports for visa and immigration documentation.' },
 ]
 
 // Distinguishes which division a service belongs to, for sections that
 // need to show Construction and Validation as separate groups.
 export const serviceDivisions = {
-  construction: services.slice(0, 6),
-  validation: services.slice(6),
+  construction: services.slice(0, 7),
+  validation: services.slice(7),
 }
 
 // Feature bullets for the Validation & Compliance division, shown in its
 // own section (see ValidationSection). Keep short — Vikas's brief-copy rule.
+
 export const validationFeatures: Record<string, string[]> = {
-  'Financial Validation & Audit': [
-    'Project cost audits',
-    'Budget verification',
-    'Quality-vs-cost validation',
-    'Financial reporting support',
+  "Property Valuation for Banks & NBFC's": [
+    'Loan-purpose valuation',
+    'Bank-approved reports',
+    'NBFC documentation support',
+    'Market value assessment',
   ],
-  'Regulatory Compliance': [
-    'Statutory approvals',
-    'Certification support',
-    'Compliance documentation',
-    'Factory & institutional compliance',
+  'Property Valuation for Visa & Immigration purpose': [
+    'Immigration-compliant reports',
+    'Asset value certification',
+    'Embassy/consulate documentation support',
+    'Fast turnaround reports',
   ],
 }
 
@@ -315,12 +319,28 @@ export const testimonials = [
 export const serviceAreas = ['Hassan', 'Channarayapatna', 'Arsikere', 'Holenarasipura', 'Sakleshpur', 'Belur', 'Alur', 'Arkalgud']
 
 export const projectTypeOptions = [
-  'Residential Construction',
-  'Commercial Construction',
-  'Civil Works',
-  'Turnkey Construction',
-  'Renovation & Remodeling',
-  'Structural Works',
-  'Financial Validation & Audit',
-  'Regulatory Compliance',
+  'Structural Design',
+  'Architectural Design Planning',
+  'Exterior and Interior Design',
+  'Layout Planning',
+  'Construction and Execution Works',
+  'Supervision Works',
+  'Interior Works',
+  "Property Valuation for Banks & NBFC's",
+  'Property Valuation for Visa & Immigration purpose',
+]
+
+export const clients = [
+  'Aadhar Housing Finance Ltd.',
+  'Veritas Finance Pvt Ltd.',
+  'The Hassan District Co-operative Central Bank Ltd.',
+  'Sri Kannikaparameshwari Co-operative Bank Ltd.',
+  'City Co-operative Bank Ltd.',
+  'Varashakti Housing Finance Ltd.',
+  'Cholamandalam Investment & Finance Company Ltd.',
+  'Manappuram Home Finance Ltd.',
+  'Piramal Finance Ltd.',
+  'Slice Small Finance Bank Ltd.',
+  'Navanc Data Sciences Private Limited',
+  'Ramaiah Capital Private Limited',
 ]

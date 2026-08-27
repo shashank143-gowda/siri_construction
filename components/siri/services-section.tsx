@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
-import { serviceDivisions } from '@/lib/site-data'
+import { services } from '@/lib/site-data'
 import { Reveal, RevealLines } from './reveal'
 
-const services = serviceDivisions.construction
+const items = services
 
 export function ServicesSection() {
   const [active, setActive] = useState<number | null>(0)

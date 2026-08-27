@@ -4,10 +4,10 @@ import { motion } from "framer-motion"
 import { company } from "@/lib/site-data"
 
 const items = [
-  { label: "Call us", value: company.phone, href: company.phoneHref },
-  { label: "WhatsApp", value: company.whatsapp, href: company.whatsappHref },
-  { label: "Email", value: company.email, href: `mailto:${company.email}` },
-  { label: "Location", value: company.location, href: company.mapsHref },
+  { label: "Call us", value: company.phone },
+  { label: "WhatsApp", value: company.whatsapp},
+  { label: "Email", value: company.email,},
+  { label: "Location", value: company.location,},
 ]
 
 export function ContactSection() {
@@ -45,7 +45,7 @@ export function ContactSection() {
             {items.map((item, i) => (
               <motion.a
                 key={item.label}
-                href={item.href}
+                
                 target={item.label === "Location" || item.label === "WhatsApp" ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 16 }}
