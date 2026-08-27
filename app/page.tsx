@@ -13,6 +13,7 @@ import { StatsSection } from "@/components/siri/stats-section"
 import { BeforeAfter } from "@/components/siri/before-after"
 import { GallerySection } from "@/components/siri/gallery-section"
 import { Testimonials } from "@/components/siri/testimonials"
+import { ClientsSection } from "@/components/siri/clients-section"
 import { ServiceArea } from "@/components/siri/service-area"
 import { QuoteForm } from "@/components/siri/quote-form"
 import { ContactSection } from "@/components/siri/contact-section"
@@ -40,7 +41,7 @@ export default function HomePage() {
 
         <ServicesSection />
 
-        <ValidationSection />
+        {/* <ValidationSection /> */}
 
         <ProjectsSection />
 
@@ -55,6 +56,8 @@ export default function HomePage() {
         <GallerySection />
 
         <Testimonials />
+
+        <ClientsSection />
 
         <ServiceArea />
 
