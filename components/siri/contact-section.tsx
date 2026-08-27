@@ -4,10 +4,10 @@ import { motion } from "framer-motion"
 import { company } from "@/lib/site-data"
 
 const items = [
-  { label: "Call us", value: company.phone },
+  { label: "Call us", value: company.phone},
   { label: "WhatsApp", value: company.whatsapp},
-  { label: "Email", value: company.email,},
-  { label: "Location", value: company.location,},
+  { label: "Email", value: company.email },
+  { label: "Location", value: company.location },
 ]
 
 export function ContactSection() {
