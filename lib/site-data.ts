@@ -13,7 +13,7 @@ export const company = {
   gstin: '29CAHPB7717E1ZR',
   phone: '+91 91640 20996',
   phoneHref: 'tel:+91 91640 20996',
-  email: 'hello@siriconstructions.example',
+  email: 'hkbharu@gmail.com',
   whatsapp: '+91 91640 20996',
   whatsappHref: 'https://wa.me/919164020996',
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=Hassan+Karnataka',
@@ -21,7 +21,6 @@ export const company = {
   socials: [
     { label: 'Instagram', href: '#' },
     { label: 'Facebook', href: '#' },
-    { label: 'YouTube', href: '#' },
     { label: 'LinkedIn', href: '#' },
     
   ],

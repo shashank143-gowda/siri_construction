@@ -13,7 +13,7 @@ export function ClientsSection() {
             <span className="h-px w-8 bg-bronze" /> Who We Work With
           </span>
           <RevealLines
-            className="font-display text-6xl font-extrabold uppercase leading-[0.85] tracking-tight sm:text-7xl lg:text-8xl"
+            className="font-display text-6xl font-extrabold uppercase leading-[0.1] tracking-tight sm:text-7xl lg:text-8xl"
             lines={['Our Clients']}
           />
         </div>
