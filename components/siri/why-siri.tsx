@@ -23,30 +23,36 @@ export function WhySiri() {
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-white/10 bg-white/10 sm:grid-cols-2">
           {whyReasons.map((reason, i) => {
             const Icon = icons[i]
+            const isLast = i === whyReasons.length - 1
             return (
               <Reveal
                 key={reason.title}
                 delay={i * 0.06}
-                className="group bg-charcoal p-8 transition-colors duration-500 hover:bg-white/[0.03]"
+                className={`group relative bg-charcoal p-8 transition-colors duration-500 hover:bg-white/[0.03] md:p-10 ${
+                  isLast ? 'sm:col-span-2 sm:flex sm:items-center sm:gap-8' : ''
+                }`}
               >
                 <Icon
-                  className="mb-8 h-8 w-8 text-bronze transition-transform duration-500 group-hover:-translate-y-1"
+                  className={`mb-8 h-8 w-8 shrink-0 text-bronze transition-transform duration-500 group-hover:-translate-y-1 ${
+                    isLast ? 'sm:mb-0' : ''
+                  }`}
                   strokeWidth={1.25}
                   aria-hidden="true"
                 />
-                <h3 className="font-display text-xl font-bold uppercase tracking-tight">
-                  {reason.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-warm-white/60">
-                  {reason.text}
-                </p>
+                <div>
+                  <h3 className="font-display text-xl font-bold uppercase tracking-tight">
+                    {reason.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-warm-white/60">
+                    {reason.text}
+                  </p>
+                </div>
               </Reveal>
             )
           })}
-          <div className="hidden bg-charcoal lg:block" />
         </div>
       </div>
     </section>
