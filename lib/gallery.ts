@@ -7,7 +7,8 @@ export type GalleryItem = {
   category: string
   filename: string
   contentType: string
-  fileId: string
+  fileId?: string
+  objectKey?: string
   imageUrl: string
   createdAt: string
   updatedAt: string
@@ -20,7 +21,9 @@ export function serializeGalleryItem(item: {
   category: string
   filename: string
   contentType: string
-  fileId: { toString(): string }
+  fileId?: { toString(): string }
+  objectKey?: string
+  imageUrl?: string
   createdAt: Date
   updatedAt: Date
 }): GalleryItem {
@@ -31,8 +34,11 @@ export function serializeGalleryItem(item: {
     category: item.category,
     filename: item.filename,
     contentType: item.contentType,
-    fileId: item.fileId.toString(),
-    imageUrl: `/api/gallery/image/${item.fileId.toString()}`,
+    fileId: item.fileId?.toString(),
+    objectKey: item.objectKey,
+    // R2-backed images already have an absolute imageUrl. Un-migrated
+    // GridFS images fall back to the existing legacy streaming route.
+    imageUrl: item.imageUrl ?? `/api/gallery/image/${item.fileId?.toString()}`,
     createdAt: item.createdAt.toISOString(),
     updatedAt: item.updatedAt.toISOString(),
   }

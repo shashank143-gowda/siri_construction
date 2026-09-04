@@ -7,9 +7,15 @@ export type GalleryDocument = {
   category: string
   filename: string
   contentType: string
-  fileId: ObjectId
   createdAt: Date
   updatedAt: Date
+  // Legacy: images stored in GridFS (bucket "galleryFiles"). Still readable
+  // via /api/gallery/image/[id] — untouched, not migrated automatically.
+  fileId?: ObjectId
+  // New: images stored in Cloudflare R2. When present, these take priority
+  // over fileId for display.
+  objectKey?: string
+  imageUrl?: string
 }
 
 export type AdminDocument = {

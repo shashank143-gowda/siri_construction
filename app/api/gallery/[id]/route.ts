@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
 import { serializeGalleryItem } from '@/lib/gallery'
 import { galleryCollection } from '@/lib/models'
+import { deleteGalleryImageFromR2 } from '@/lib/r2'
 import { deleteGalleryImage } from '@/lib/storage'
 import { validateGalleryFields } from '@/lib/validation'
 
@@ -39,7 +40,15 @@ export async function DELETE(_request: Request, context: { params: Promise<{ id:
     const collection = await galleryCollection()
     const item = await collection.findOneAndDelete({ _id: id })
     if (!item) return NextResponse.json({ error: 'Gallery image not found.' }, { status: 404 })
-    await deleteGalleryImage(item.fileId).catch((error) => console.error('GridFS deletion failed', error))
+
+    // R2-backed images are deleted from R2. Un-migrated legacy images (still
+    // only in GridFS) are deleted from GridFS instead — either way the Mongo
+    // gallery document above is already gone.
+    if (item.objectKey) {
+      await deleteGalleryImageFromR2(item.objectKey).catch((error) => console.error('R2 deletion failed', error))
+    } else if (item.fileId) {
+      await deleteGalleryImage(item.fileId).catch((error) => console.error('GridFS deletion failed', error))
+    }
     return NextResponse.json({ ok: true })
   } catch (error) {
     console.error('Gallery deletion failed', error)

@@ -1,20 +1,25 @@
 import { NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
+import { corsHeaders } from '@/lib/cors'
 import { serializeGalleryItem } from '@/lib/gallery'
 import { ensureModelIndexes, galleryCollection } from '@/lib/models'
-import { deleteGalleryImage, uploadGalleryImage } from '@/lib/storage'
+import { deleteGalleryImageFromR2, uploadGalleryImageToR2 } from '@/lib/r2'
 import { validateGalleryFields, validateImageFile } from '@/lib/validation'
 
 export const runtime = 'nodejs'
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const items = await (await galleryCollection()).find({}).sort({ createdAt: -1 }).toArray()
-    return NextResponse.json({ items: items.map(serializeGalleryItem) })
+    return NextResponse.json({ items: items.map(serializeGalleryItem) }, { headers: corsHeaders(request) })
   } catch (error) {
     console.error('Gallery read failed', error)
-    return NextResponse.json({ error: 'Unable to load gallery.' }, { status: 500 })
+    return NextResponse.json({ error: 'Unable to load gallery.' }, { status: 500, headers: corsHeaders(request) })
   }
+}
+
+export async function OPTIONS(request: Request) {
+  return new NextResponse(null, { status: 204, headers: corsHeaders(request) })
 }
 
 export async function POST(request: Request) {
@@ -34,7 +39,7 @@ export async function POST(request: Request) {
     const imageBuffer = await validateImageFile(image)
     if ('error' in imageBuffer) return NextResponse.json(imageBuffer, { status: 400 })
 
-    const storedImage = await uploadGalleryImage(imageBuffer, image.name, image.type)
+    const storedImage = await uploadGalleryImageToR2(imageBuffer, image.name, image.type)
     const now = new Date()
     try {
       await ensureModelIndexes()
@@ -42,7 +47,7 @@ export async function POST(request: Request) {
       const item = await (await galleryCollection()).findOne({ _id: result.insertedId })
       return NextResponse.json({ item: item && serializeGalleryItem(item) }, { status: 201 })
     } catch (error) {
-      await deleteGalleryImage(storedImage.fileId).catch(() => undefined)
+      await deleteGalleryImageFromR2(storedImage.objectKey).catch(() => undefined)
       throw error
     }
   } catch (error) {
