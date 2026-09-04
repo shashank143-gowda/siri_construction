@@ -30,8 +30,8 @@ export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
-  { label: 'Clients', href: '#clients' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Clients', href: '#clients' },
   
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },

@@ -3,17 +3,38 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
-import { galleryCategories, galleryItems } from '@/lib/site-data'
+import { galleryCategories, type GalleryItem } from '@/lib/gallery'
 import { Reveal, RevealLines } from './reveal'
 
 export function GallerySection() {
   const [active, setActive] = useState<string>('All')
   const [lightbox, setLightbox] = useState<number | null>(null)
+  const [items, setItems] = useState<GalleryItem[]>([])
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
+
+  useEffect(() => {
+    let activeRequest = true
+    fetch('/api/gallery')
+      .then(async (response) => {
+        if (!response.ok) throw new Error('Gallery unavailable')
+        return response.json() as Promise<{ items: GalleryItem[] }>
+      })
+      .then((data) => {
+        if (!activeRequest) return
+        setItems(data.items)
+        setStatus('ready')
+      })
+      .catch(() => {
+        if (activeRequest) setStatus('error')
+      })
+
+    return () => { activeRequest = false }
+  }, [])
 
   const filtered =
     active === 'All'
-      ? galleryItems
-      : galleryItems.filter((g) => g.category === active)
+      ? items
+      : items.filter((g) => g.category === active)
 
   useEffect(() => {
     if (lightbox === null) return
@@ -48,7 +69,7 @@ export function GallerySection() {
             />
           </div>
           <div className="flex flex-wrap gap-2">
-            {galleryCategories.map((c) => (
+            {['All', ...galleryCategories].map((c) => (
               <button
                 key={c}
                 type="button"
@@ -66,9 +87,12 @@ export function GallerySection() {
         </div>
 
         <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-          {filtered.map((item, i) => (
+          {status === 'loading' && <p className="py-12 text-sm text-warm-white/60">Loading gallery…</p>}
+          {status === 'error' && <p className="py-12 text-sm text-warm-white/60">Our gallery is temporarily unavailable. Please try again shortly.</p>}
+          {status === 'ready' && filtered.length === 0 && <p className="py-12 text-sm text-warm-white/60">No images are available in this category yet.</p>}
+          {status === 'ready' && filtered.map((item, i) => (
             <motion.button
-              key={`${item.src}-${item.title}`}
+              key={item._id}
               layout
               type="button"
               onClick={() => setLightbox(i)}
@@ -79,8 +103,8 @@ export function GallerySection() {
             >
               <div className="relative">
                 <Image
-                  src={item.src}
-                  alt={`${item.title}, ${item.location}`}
+                  src={item.imageUrl}
+                  alt={item.title}
                   width={800}
                   height={i % 3 === 0 ? 1000 : 700}
                   className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -138,7 +162,7 @@ export function GallerySection() {
             </button>
 
             <motion.div
-              key={current.src + current.title}
+              key={current._id}
               className="relative max-h-[85vh] w-full max-w-4xl"
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -147,8 +171,8 @@ export function GallerySection() {
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={current.src}
-                alt={`${current.title}, ${current.location}`}
+                src={current.imageUrl}
+                alt={current.title}
                 width={1200}
                 height={900}
                 className="mx-auto max-h-[80vh] w-auto rounded-sm object-contain"
@@ -156,7 +180,7 @@ export function GallerySection() {
               <div className="mt-4 text-center">
                 <p className="text-xs uppercase tracking-widest text-bronze">{current.category}</p>
                 <p className="font-display text-xl font-bold uppercase tracking-tight">{current.title}</p>
-                <p className="text-sm text-warm-white/60">{current.location}</p>
+                {current.description && <p className="text-sm text-warm-white/60">{current.description}</p>}
               </div>
             </motion.div>
           </motion.div>
