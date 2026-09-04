@@ -46,16 +46,17 @@ export function AdminGallery({ email }: { email: string }) {
 
   async function upload(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    const form = event.currentTarget
     if (!file) return setMessage('Select an image before saving.')
     setUploading(true)
     setMessage('')
-    const data = new FormData(event.currentTarget)
+    const data = new FormData(form)
     data.set('image', file)
     const response = await fetch('/api/gallery', { method: 'POST', body: data })
     const result = await response.json()
     setUploading(false)
     if (!response.ok) return setMessage(result.error ?? 'Unable to save image.')
-    event.currentTarget.reset()
+    form.reset()
     if (preview) URL.revokeObjectURL(preview)
     setPreview('')
     setFile(null)
